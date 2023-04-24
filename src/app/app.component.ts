@@ -8,3 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular';
 }
+export interface Angular {
+  id: number;
+  feature: string;
+}
