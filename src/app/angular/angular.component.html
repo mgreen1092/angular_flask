@@ -2,20 +2,21 @@
 <h2>Angular Features</h2>
 <ul class="angular">
     <li *ngFor="let angularInformation of angular ">
-        <button type="button" (click)="onSelect(angularInformation)">
+        <button [class.selected]="angularInformation === selectedAngularInformation"  type="button" (click)="onSelect(angularInformation)">
             <span class="badge">{{angularInformation.id}}. </span>
             <span class="feature">{{angularInformation.feature}}</span>
         </button>
     </li>
 </ul>
-<div *ngIf="selectedAngularInformation">
+<app-angular-detail [angular]="selectedAngularInformation"></app-angular-detail>
+<!-- <div *ngIf="selectedAngularInformation">
     <h2>{{selectedAngularInformation.feature | uppercase}} Details</h2>
     <div>ID: {{selectedAngularInformation.id}}</div>
     <div>
         <label for="angular-feature">Angular Feature: </label>
         <input id="angular-feature" [(ngModel)]="selectedAngularInformation.feature" placeholder="feature">
     </div>
-</div>
+</div> -->
 
 <!-- [(ngModel)] is two way data binding, here it binds angular.feature property to the HTML text box so data can flow in both directions (angular.feature property to text box and back) -->
 <!-- in order for ngModel to work, need to import FormsModule in app.modules.ts and add it to imports under NgModules -->
@@ -28,5 +29,8 @@
 
 <!-- <h1>{{angular.feature | uppercase}}</h1>
 <p>ID: {{angular.id}}</p> -->
+
+<!-- [angular] = property binding - a one-way data bidning from the selectedAngularInformation porperty of the AngularComponent to the angular property of the target element which maps to the angular property of the AngularDetailComponent -->
+<!-- When a user clicks a angular feature in the list, selectedAngularInformation changes. When selectedAngularInformation changes, the property binding updates angular and the AngularDetailComponent displays new angular -->
 
 

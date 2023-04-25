@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Angular } from '../app.component'
-import { ANGULAR } from '../mock-angular';
+// import { ANGULAR } from '../mock-angular';
+import { AngularService } from '../angular.service';
 @Component({
   selector: 'app-angular',
   // CCS element selector
@@ -10,11 +11,18 @@ import { ANGULAR } from '../mock-angular';
   // location of private CSS styles
 })
 export class AngularComponent {
-  angular = ANGULAR
+  constructor (private angularService: AngularService) {}
+  angular: Angular[]= []
 
   selectedAngularInformation ?: Angular;
 
-  onSelect(angularInformation: Angular): void {
-    this.selectedAngularInformation = angularInformation
+  onSelect(angular: Angular): void {
+    this.selectedAngularInformation = angular
+  }
+  getAngular (): void {
+    this.angular = this.angularService.getAngular();
+  }
+  ngOnInit (): void {
+    this.getAngular()
   }
 }

@@ -1,0 +1,8 @@
+<div *ngIf="angular">
+    <h2>{{angular.feature | uppercase}} Details</h2>
+    <div>ID: {{angular.id}}</div>
+    <div>
+        <label for="angular-feature">Angular Feature: </label>
+        <input id="angular-feature" [(ngModel)]="angular.feature" placeholder="feature">
+    </div>
+</div>
